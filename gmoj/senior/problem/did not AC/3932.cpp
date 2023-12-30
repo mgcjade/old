@@ -84,6 +84,6 @@ int main()
         printf("1\n%d", mn);
     }
     else
-        printf("0\n%d", cnt - 2);
+        printf("0\n%d", cnt - 2 + 1 - 1);
     return 0;
 }
