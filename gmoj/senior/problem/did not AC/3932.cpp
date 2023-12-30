@@ -69,9 +69,22 @@ int main()
             t = 0;
         for (int j = 1; j <= m; j++)
         {
+            f[j][1] = f[j][2] = INF;
+            if (j > a[t].l && j < a[t].h)
+            {
+                if (j > x[i - 1])
+                    f[j][1] = min(f[j - x[i - 1]][0], f[j - x[i - 1]][1]) + 1;
+                if (j + y[i - 1] <= m)
+                    f[j][2] = f[j + y[i - 1]][0];
+                if (j == m)
+                    for (int k = 1; k < x[i - 1] && j > k; k++)
+                        f[j][1] = min(f[j][1], f[j - k][0] + 1);
+            }
         }
         for (int j = 1; j <= m; j++)
-            if (f[j][i & 1] != INF)
+            f[j][0] = min(f[j][1], f[j][2]);
+        for (int j = 1; j <= m; j++)
+            if (f[j][0] != INF)
                 mx = i;
         if (mx < i)
             break;
@@ -80,10 +93,10 @@ int main()
     {
         int mn = INF;
         for (int i = 1; i <= m; i++)
-            mn = min(mn, f[i][n & 1]);
+            mn = min(mn, f[i][0]);
         printf("1\n%d", mn);
     }
     else
-        printf("0\n%d", cnt - 2 + 1 - 1);
+        printf("0\n%d", cnt - 2);
     return 0;
 }
