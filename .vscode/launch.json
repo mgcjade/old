@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "z:/old/gmoj/senior/contest",
-      "program": "z:/old/gmoj/senior/contest/build/Debug/outDebug",
+      "cwd": "e:/haoqi/old/old/atcoder/abc336",
+      "program": "e:/haoqi/old/old/atcoder/abc336/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
