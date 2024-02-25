@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "e:/haoqi/old/old/other",
-      "program": "e:/haoqi/old/old/other/build/Debug/outDebug",
+      "cwd": "",
+      "program": "",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
