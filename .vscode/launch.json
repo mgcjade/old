@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "",
-      "program": "",
+      "cwd": "e:/haoqi/old/old/luogu/problem",
+      "program": "e:/haoqi/old/old/luogu/problem/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
