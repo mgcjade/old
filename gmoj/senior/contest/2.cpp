@@ -3,46 +3,37 @@
 using namespace std;
 typedef long long ll;
 
-const int N = 5e4 + 5;
+const int N = 5e5 + 5;
 const int INF = 0x3f3f3f3f;
 const int MOD = 1e9 + 7;
 
-inline void read(int &s)
-{
-	s = 0;
-	char ch = getchar(), last = ' ';
-	while (ch < '0' || ch > '9')
-		last = ch, ch = getchar();
-	while (ch >= '0' && ch <= '9')
-		s = (s << 1) + (s << 3) + (ch ^ 48), ch = getchar();
-	s = last == '-' ? -s : s;
-}
-
-int n, m;
-struct edge
-{
-	int to, nxt, len;
-};
-edge a[N << 1];
-int hd[N], cnt;
-void add(int x, int y, int z)
-{
-	cnt++;
-	a[cnt].to = y;
-	a[cnt].len = z;
-	a[cnt].nxt = hd[x];
-	hd[x] = cnt;
-}
+int n;
+int op, x;
+int f[N], a[N], tot[N];
 
 int main()
 {
-	fre(ans);
-	read(n), read(m);
-	for (int i = 1; i < n; i++)
-	{
-		int x, y, z;
-		read(x), read(y), read(z);
-		add(x, y, z), add(y, x, z);
-	}
-	return 0;
+    fre(ans);
+    ios::sync_with_stdio(0);
+    cin.tie(nullptr);
+    cout.tie(nullptr);
+    cin >> n;
+    for (int tp = 1; tp <= n; tp++)
+    {
+        cin >> op >> x;
+        if (op == 0)
+        {
+            tot[tp] = tot[tp - 1] + 1;
+            a[tot[tp]] = x;
+            f[tot[tp]] = 1;
+            for (int i = 1; i < tot[tp]; i++)
+                f[tot[tp]] = max(f[tot[tp]], f[i] + (a[tot[tp]] > a[i]));
+        }
+        else
+        {
+            tot[tp] = tot[x];
+        }
+        cout << f[tot[tp]] << '\n';
+    }
+    return 0;
 }
