@@ -8,31 +8,8 @@ const int INF = 0x3f3f3f3f;
 const int MOD = 1e9 + 7;
 
 int n;
-double v[N + 5];
-int a[N + 5];
-double ans;
-
-void dg(int k, double s)
-{
-    if (int(ceil(s)) == 0)
-        return;
-    if (k > n)
-    {
-        int t = 0, flag = 0;
-        for (int i = 1; i <= n; i++)
-            if (a[i])
-                flag++;
-            else
-                t += flag * flag * flag, flag = 0;
-        t += flag * flag * flag, flag = 0;
-        ans += s * t;
-        return;
-    }
-    a[k] = 0;
-    dg(k + 1, s * (1 - v[k]));
-    a[k] = 1;
-    dg(k + 1, s * v[k]);
-}
+double v;
+double x, y, ans;
 
 int main()
 {
@@ -42,8 +19,12 @@ int main()
     cout.tie(nullptr);
     cin >> n;
     for (int i = 1; i <= n; i++)
-        cin >> v[i];
-    dg(1, 1);
+    {
+        cin >> v;
+        ans = ans + (3 * y + 3 * x + 1) * v;
+        y = (y + 2 * x + 1) * v;
+        x = (x + 1) * v;
+    }
     cout << fixed << setprecision(1) << ans;
     return 0;
 }
