@@ -9,5 +9,9 @@ const int MOD = 1e9 + 7;
 
 int main()
 {
+    ios::sync_with_stdio(0);
+    cin.tie(nullptr);
+    cout.tie(nullptr);
+
     return 0;
 }
