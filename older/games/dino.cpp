@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+#include <windows.h>
 #include <conio.h>
 using namespace std;
 
@@ -15,7 +16,8 @@ void gotoxy(const int &x, const int &y)
 
 void cls()
 {
-    printf("\033[2J");
+    // printf("\033[2J");
+    system("cls");
 }
 
 struct PointSprite
@@ -78,6 +80,7 @@ struct Wall : PointSprite
 
 int main()
 {
+    system("chcp 65001 >nul");
     memset(background, ' ', sizeof(background));
     printf("\033[?25l");
     srand(time(0));
