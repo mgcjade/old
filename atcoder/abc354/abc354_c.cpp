@@ -10,8 +10,8 @@ struct node
     int num;
 } a[N], b[N];
 int pre[N], nxt[N];
-bool cmp(node x, node y) { return x.a < y.a; }
-bool _cmp(node x, node y) { return x.b > y.b; }
+bool cmp(node x, node y) { return x.a > y.a; }
+bool _cmp(node x, node y) { return x.b < y.b; }
 map<int, int> mp;
 bool used[N];
 int ans;
