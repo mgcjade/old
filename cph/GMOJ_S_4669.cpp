@@ -20,7 +20,7 @@ int main()
     // cout.tie(0);
     cin >> str;
     len = str.size();
-    cout << "0 ";
+    // cout << "0 ";
     for (int i = 2; i <= len; i++)
     {
         int j = pi[i - 1] + 1;
@@ -29,19 +29,29 @@ int main()
         pi[i] = 0;
         if (str[i - 1] == str[j - 1])
             pi[i] = j;
-        cout << pi[i] << " ";
+        // cout << pi[i] << " ";
     }
-    cout << "\n";
+    // cout << "\n";
     cin >> m;
     while (m--)
     {
         cin >> a >> b;
-        while (a != b)
+        if (str[a - 1] != str[b - 1])
         {
-            if (pi[a] >= pi[b])
+            cout << "0 0\n";
+            continue;
+        }
+        while (a != b && a && b)
+        {
+            if (pi[a] > pi[b])
                 a = pi[a];
             else
                 b = pi[b];
+        }
+        if (a != b)
+        {
+            cout << "0 0\n";
+            continue;
         }
         int cnt = 0;
         while (a > 0)
@@ -49,7 +59,7 @@ int main()
             cnt++;
             a = pi[a];
         }
-        cnt += (str[0] == str[b - 1] && b != 1);
+        // cnt += (str[0] == str[b - 1] && b > 1);
         cout << cnt << ' ' << b << '\n';
     }
     return 0;
