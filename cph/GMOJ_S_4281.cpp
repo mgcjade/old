@@ -22,34 +22,31 @@ bool vis[N];
 void dfs(int k)
 {
     vis[k] = true;
-    if (e[k].size() <= 1)
-    {
-        if (cl[k] == 0)
-        {
-            f[k][0] = INF;
-            f[k][1] = 0;
-            f[k][2] = 0;
-        }
-        else if (cl[k] == 1)
-        {
-            f[k][0] = 0;
-            f[k][1] = INF;
-            f[k][2] = 0;
-        }
-        else
-        {
-            f[k][0] = 0;
-            f[k][1] = 0;
-            f[k][2] = 0;
-        }
-        return;
-    }
-    if (cl[k] == 0)
-        f[k][0] = INF;
-    else if (cl[k] == 1)
-        f[k][1] = INF;
+    // if (e[k].size() <= 1)
+    // {
+    // if (cl[k] == 0)
+    // {
+    //     f[k][0] = INF;
+    //     f[k][1] = 0;
+    //     f[k][2] = 0;
+    // }
+    // else if (cl[k] == 1)
+    // {
+    //     f[k][0] = 0;
+    //     f[k][1] = INF;
+    //     f[k][2] = 0;
+    // }
+    // else
+    // {
+    //     f[k][0] = 0;
+    //     f[k][1] = 0;
+    //     f[k][2] = 0;
+    // }
+    //     return;
+    // }
     ll sum = 0;
-    for (int i = e[k].size() - 1; i >= 0; i--)
+    int t = e[k].size();
+    for (int i = 0; i < t; i++)
     {
         int v = e[k][i].to;
         if (!vis[v])
@@ -63,7 +60,11 @@ void dfs(int k)
                 f[k][2] += min(f[v][1], e[k][i].w + min(f[v][0], f[v][2]));
         }
     }
+    if (cl[k] == 0)
+        f[k][0] = INF;
     if (cl[k] == 1)
+        f[k][1] = INF;
+    if (cl[k] != 1)
         f[k][2] = f[k][1] - sum;
 }
 
@@ -73,7 +74,7 @@ int main()
     ios::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
-    // fre(tree2);
+    fre(tree2);
     cin >> n;
     for (int i = 1; i <= n; i++)
         cin >> cl[i];
@@ -85,12 +86,12 @@ int main()
         t.to = x;
         e[y].push_back(t);
     }
-    for (int i = 1; i <= n; i++)
-        for (int j = 0; j < e[i].size(); j++)
-            cout << i << ' ' << e[i][j].to << ' ' << e[i][j].w << '\n';
+    // for (int i = 1; i <= n; i++)
+    //     for (int j = 0; j < e[i].size(); j++)
+    //         cout << i << ' ' << e[i][j].to << ' ' << e[i][j].w << '\n';
     dfs(1);
-    // cout << min(f[1][0], min(f[1][1], f[1][2])) << "\n";
-    for (int i = 1; i <= n; i++)
-        cout << f[i][0] << ' ' << f[i][1] << ' ' << f[i][2] << '\n';
+    cout << min(f[1][0], min(f[1][1], f[1][2])) << "\n";
+    // for (int i = 1; i <= n; i++)
+    //     cout << f[i][0] << ' ' << f[i][1] << ' ' << f[i][2] << '\n';
     return 0;
 }
