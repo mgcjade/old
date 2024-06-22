@@ -13,6 +13,16 @@ int t[N];
 int ans;
 int x, y;
 
+class cmp
+{
+public:
+    bool operator()(const pair<int, int> &a, const pair<int, int> &b)
+    {
+        return a.second > b.second;
+    }
+};
+priority_queue<pair<int, int>, vector<pair<int, int>>, cmp> q;
+
 int main()
 {
     ios::sync_with_stdio(0);
@@ -26,14 +36,24 @@ int main()
         cin >> t[j];
     sort(t + 1, t + m + 1);
     x = 1, y = 1;
-    while (x <= n && y <= m)
+    while ((x <= n || !q.empty()) && y <= m)
     {
-        if (p[x].second < t[y])
+        if (x <= n && p[x].first <= t[y])
+        {
+            q.push(make_pair(p[x].first, p[x].second));
             x++;
-        else if (p[x].first > t[y])
+        }
+        while (!q.empty() && q.top().second < t[y])
+            q.pop();
+        if (!q.empty() && q.top().first <= t[y] && q.top().second >= t[y])
+        {
+            cout << q.top().first << " " << q.top().second << ' ' << t[y] << '\n';
+            ans++;
+            q.pop();
             y++;
-        else
-            x++, y++, ans++;
+        }
+        else if (q.empty())
+            y++;
     }
     cout << ans << '\n';
     return 0;
