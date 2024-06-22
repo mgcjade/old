@@ -1,5 +1,5 @@
 #include <bits/stdc++.h>
-#define new_file(x) freopen(#x ",in", "w", stdout)
+#define new_file(x) freopen(#x ".in", "w", stdout)
 using namespace std;
 typedef long long ll;
 

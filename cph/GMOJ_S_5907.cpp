@@ -28,6 +28,7 @@ int main()
     ios::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
+    // fre(qinggong);
     memset(f, 0x3f, sizeof(f));
     cin >> n >> k >> w;
     for (int i = 1; i <= k; i++)
@@ -44,7 +45,7 @@ int main()
     {
         for (int j = 1; j <= k; j++)
         {
-            if (check(i - a[j] + 1, i, j) && i - a[j] >= 0)
+            if (i - a[j] >= 0 && check(i - a[j] + 1, i, j))
                 for (int h = 1; h <= k; h++)
                 {
                     f[i][j] = min(f[i][j], f[i - a[j]][h] + w * (j != h) + v[j]);
