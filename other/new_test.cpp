@@ -1,26 +1,20 @@
 #include <bits/stdc++.h>
-#define fre(x) freopen(#x ".in", "r", stdin), freopen(#x ".out", "w", stdout)
+#define new_file(x) freopen(#x ",in", "w", stdout)
 using namespace std;
 typedef long long ll;
 
 int main()
 {
-    freopen("new_test.in", "w", stdout);
-    int n = 1e5;
-    const int MAX = 1e6 + 1;
-    printf("%d\n", n);
-    int t;
-    for (int i = 1; i <= n; i++)
-    {
-        srand(time(0) * t + rand());
-        t = rand();
-        srand(t);
-        t = rand() % (int)1e5;
-        srand(t * t);
-        t = rand();
-        srand(time(0) * t + rand());
-        t = rand() % MAX;
-        printf("%d ", t);
-    }
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    new_file(qinggong);
+    mt19937 myrand(time(NULL));
+    cout << 500 << ' ' << 100 << ' ' << 9999999 << '\n';
+    for (int i = 1; i <= 100; i++)
+        cout << myrand() % 500 + 1 << ' ' << 10000000 << '\n';
+    cout << 50000;
+    for (int i = 1; i <= 500000; i++)
+        cout << myrand() % 500 + 1 << ' ' << myrand() % 100 + 1 << '\n';
     return 0;
 }

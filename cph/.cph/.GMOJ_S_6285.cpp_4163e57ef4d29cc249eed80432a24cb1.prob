@@ -1,0 +1,1 @@
+{"name":"GMOJ_S_6285","url":"https://gmoj.net/senior/#contest/show/4140/3","tests":[{"id":1719016054450,"input":"4 3\n1 2\n2 3\n2 4\n1 2\n1 3\n3 4\n","output":"1\n1\n2\n"}],"srcPath":"c:\\Users\\Administrator\\Documents\\GitHub\\old\\cph\\GMOJ_S_6285.cpp"}
