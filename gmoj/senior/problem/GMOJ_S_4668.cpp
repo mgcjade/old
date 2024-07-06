@@ -25,23 +25,23 @@ ll fastpow(__int128 x, __int128 y)
     return ret;
 }
 
-int prim[10000005], prime[10000000];
+int prim[10000005], prime[10000000], cnt;
 void init()
 {
     int MAX = 1e7;
     for (int i = 2; i <= MAX; i++)
     {
         if (!prim[i])
-            prime[++prime[0]] = i;
+            prime[++cnt] = i;
         int t = MAX / i;
-        for (int j = 1; prime[j] <= t; j++)
+        for (int j = 1; prime[j] <= t && j <= cnt; j++)
         {
             prim[prime[j] * i] = 1;
             if (i % prime[j] == 0)
                 break;
         }
     }
-    for (int i = 1; i <= prime[0]; i++)
+    for (int i = 1; i <= cnt; i++)
         prim[prime[i]] = i;
     return;
 }
@@ -72,11 +72,11 @@ int main()
         if (a[i] > 1)
             pri[prim[a[i]]][1]++;
     }
-    for (int i = 2; i <= mx; i++)
+    for (int i = 1; i <= mx; i++)
     {
         // cout << ans << '\n';
         for (int j = 1; pri[i][j] > 0; j++)
-            ans = (ans * fastpow(prim[i], pri[i][j] * (pri[i][j] - 1) / 2)) % MOD;
+            ans = (ans * fastpow(prime[i], pri[i][j] * (pri[i][j] - 1) / 2)) % MOD;
     }
     cout << (ll)ans << '\n';
     return 0;
