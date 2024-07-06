@@ -1,1 +1,0 @@
-{"name":"GMOJ_S_4283","url":"https://gmoj.net/senior/#contest/show/4127/1","tests":[{"id":1717804389453,"input":"3 4\n2 1 E 1 2 N\n2 1 N 1 1 N\n3 1 N 2 1 N\n2 2 N 1 1 N","output":"YES\nYES\nNO\nNO"}],"srcPath":"c:\\Users\\Administrator\\Documents\\GitHub\\old\\cph\\GMOJ_S_4283.cpp"}
