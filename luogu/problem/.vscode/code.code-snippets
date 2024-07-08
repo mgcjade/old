@@ -1,0 +1,120 @@
+{
+    "cpp": {
+        "scope": "c++, cxx, cpp",
+        "prefix": "cpp",
+        "body": [
+			"#include <bits/stdc++.h>\n\
+using namespace std;\n\
+using ll = long long;\n\
+\n\
+const int N = 2e5 + 10;\n\
+const int INF = 0x3f3f3f3f;\n\
+const int MOD = 1e9 + 7;\n\
+\n\
+$1\n\
+\n\
+int main()\n\
+{\n\
+\t$0\n\
+\t\n\
+\treturn 0;\n\
+            }\n"
+        ],
+        "description": "cpp"
+    },
+    "file": {
+        "scope": "c++, cxx, cpp",
+        "prefix": "file",
+        "body": [
+			"#ifn$2def ONLINE_JUDGE\n\
+\tfreopen(\"$1.in\", \"r\", stdin);\n\
+\tfreopen(\"$1.out\", \"w\", stdout);\n\
+#endif\n\n$0"
+        ],
+        "description": "file"
+    },
+    "return": {
+        "scope": "c++, cxx, cpp",
+        "prefix": [
+            "ret",
+            "retu",
+            "retur",
+            "return"
+        ],
+        "body": [
+            "return $1;"
+        ],
+        "description": "return"
+    },
+    "o2": {
+        "scope": "c++, cxx, cpp",
+        "prefix": "o2",
+        "body": [
+            "#pragma GCC optimize(\"O2\", \"O3\", \"Ofast\", \"inline\")\n"
+        ],
+        "description": "o2"
+    },
+    "cin": {
+        "scope": "c++, cxx, cpp",
+        "prefix": "cin",
+        "body": [
+            "cin.tie(0)->sync_with_stdio(false);\n"
+        ],
+        "description": "cin"
+    },
+    "out": {
+        "scope": "c++, cxx, cpp",
+        "prefix": "out",
+        "body": [
+			"template <typename T>\n\
+inline void out(const T &t)\n\
+{\n\
+\tcout << t << '\\n';\n\
+            }\n\
+\n\
+template <typename T, typename... Args>\n\
+inline void out(const T &t, const Args &...rest)\n\
+{\n\
+\tcout << t << ' ';\n\
+\tout(rest...);\n\
+            }\n"
+        ],
+        "description": "out"
+    },
+    "read": {
+        "scope": "c++, cxx, cpp",
+        "prefix": "read",
+        "body": [
+			"inline ll read()\n\{\n\
+\tstatic char ch, last;\n\
+\tstatic ll res;\n\
+\tch = last = res = 0;\n\
+\twhile (!isdigit(ch))\n\
+\t{\n\
+\t\tlast = ch, ch = getchar();\n\
+\t
+            }\n\
+\twhile (isdigit(ch))\n\
+\t{\n\
+\t\tres = res * 10 + ch - '0', ch = getchar();\n\
+\t
+            }\n\
+\treturn last == '-' ? -res : res;\n\
+        }\n"
+    ],
+    "description": "read"
+},
+"atcoder": {
+    "scope": "c++, cxx, cpp",
+    "prefix": "atcoder",
+    "body": [
+			"ll n, m, k, l, q, ans, cnt;\n\
+ll a[N
+        ], b[N
+        ], c[N
+        ];\n\
+string s, t;\n"
+    ],
+    "description": "atcoder"
+}
+}
