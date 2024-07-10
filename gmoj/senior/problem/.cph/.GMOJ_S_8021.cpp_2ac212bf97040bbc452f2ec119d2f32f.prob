@@ -1,0 +1,1 @@
+{"name":"GMOJ_S_8021","url":"https://gmoj.net/senior/#main/show/8021","tests":[{"id":1720594292719,"input":"17\nK\nK\nK\nK\nQ\n9\n9\n9\n10 \n10 \n10 \nJ\nJ\nJ \n8\n8\n5\n","output":"Yes\n"},{"id":1720598183850,"input":"4\n10\n10\nA\n2\n","output":"No"}],"srcPath":"c:\\Users\\User\\Documents\\Github\\old\\gmoj\\senior\\problem\\GMOJ_S_8021.cpp"}
