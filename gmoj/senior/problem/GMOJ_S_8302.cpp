@@ -94,6 +94,7 @@ signed main()
     // for (int i = 1; i <= cnt; i++)
     //     cout << tree[i].start << ' ' << tree[i].end << ' ' << tree[i].color << ' ' << tree[i].need << ' ' << tree[i].lson << ' ' << tree[i].rson << '\n';
     int flag, a, b, c;
+    bool fl = 0;
     while (Q--)
     {
         cin >> flag;
@@ -102,18 +103,24 @@ signed main()
             cin >> a >> b >> c;
             books[a] = b;
             wight[a] = c;
-            change1(a, 1);
-            // rebuild(1);
+            if (fl == 0)
+                change1(a, 1);
+            else
+                rebuild(1);
+            fl = 0;
         }
         else if (flag == 2)
         {
             cin >> a >> b >> c;
             for (int i = a; i <= b; i++)
                 color[i] = c;
-            rebuild(1);
+            fl = 1;
         }
         else
         {
+            if (fl == 1)
+                rebuild(1);
+            fl = 0;
             cin >> a >> b;
             cout << count(a, b, 1) << '\n';
         }
