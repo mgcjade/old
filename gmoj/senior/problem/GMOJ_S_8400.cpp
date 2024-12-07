@@ -9,10 +9,7 @@ const ll MOD = 1e9 + 7;
 
 ll count(ll n, ll m)
 {
-    ll len = m - n + 1;
-    if (len & 1)
-        return (n + m) / 2 % MOD * len % MOD;
-    return (n + m) % MOD * len / 2 % MOD;
+    return (((n + m) % MOD) * (m - n + 1) % MOD) * 500000004 % MOD;
 }
 
 ll l, r;
@@ -26,21 +23,19 @@ int main()
     cin.tie(0);
     cout.tie(0);
     cin >> l >> r;
-    if (l == 1 && r == 1000000000000000000)
-    {
-        cout << 999999958 << '\n';
-        return 0;
-    }
-    s = sqrt(l), t = sqrt(r);
+    s = sqrt(l), t = sqrt(r - 1) + 1;
     a = l;
     for (ll i = s; i <= t; i++)
     {
         b = min(i * i + i, r);
+        if (b < a)
+            continue;
         ans += ((i & 1) ? 1 : -1) * count(a, b);
         ans = ans % MOD;
+        // cout << ans << ' ' << count(a, b) << '\n';
         a = b + 1;
     }
-    ans = (ans % MOD + MOD) % MOD;
+    ans = (ans + MOD) % MOD;
     cout << ans << '\n';
     return 0;
 }
