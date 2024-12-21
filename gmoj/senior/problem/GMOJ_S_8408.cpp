@@ -25,7 +25,6 @@ ll fast_pow(ll a, ll b)
 
 ll l, r;
 ll ans;
-ll t;
 
 int main()
 {
@@ -33,6 +32,14 @@ int main()
     cin.tie(0);
     cout.tie(0);
     cin >> l >> r;
-    cout << (fast_pow(2, r + 1) - fast_pow(2, l)) / 3 - (r - l + 1) / 2;
+    ans = (fast_pow(2, r - l + 1) - 1 + MOD) % MOD * fast_pow(2, l) % MOD;
+    if (l & 1)
+        ans = (ans - 2 + MOD) % MOD, ++l;
+    if (!(r & 1))
+        ans = (ans - 1 + MOD) % MOD, --r;
+    ans = (ans - (r - l + 1 >> 1) * 3 % MOD + MOD) % MOD * fast_pow(3, MOD - 2) % MOD;
+    cout << ans;
+    // cout << ((fast_pow(2, r + 1) - 1) - (fast_pow(2, l) - 1)) << '\n';
+    // cout << (3 * ((r - l + 1) >> 1)) + (((r - l + 1) & 1) == 0 ? ((r & 1) ^ 1) : 0) << '\n';
     return 0;
 }
