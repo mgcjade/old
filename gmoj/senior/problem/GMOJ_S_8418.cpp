@@ -10,34 +10,98 @@ const int N = 1e6;
 const int INF = 0x3f3f3f3f;
 const int MOD = 1e9 + 7;
 
-bool check(ll x)
+ll n, ans;
+int cnt, tmp;
+int ql, qr;
+int a[20], b[20], c[20];
+int q[205];
+
+bool build(int x, int y)
 {
-    ll t = x;
-    int len = 0;
-    string str;
-    while (t)
+    memset(b, -1, sizeof(b)), memset(c, -1, sizeof(c));
+    ql = 1, qr = 0;
+    ref(i, x, y)
     {
-        len++;
-        str += t % 10 + '0';
-        t /= 10;
+        if (a[i] > 9)
+            return 0;
+        else
+        {
+            c[i] = a[i];
+            q[++qr] = 20 + i;
+        }
     }
-    ref(i, 0, len / 2) if (str[i] != str[len - i - 1]) return 0;
+    while (ql <= qr)
+    {
+        tmp = q[ql];
+        if (tmp < 20)
+        {
+            if ((c[tmp] != -1 && c[tmp] != a[tmp] - b[tmp]) || a[tmp] - b[tmp] < 0 || a[tmp] - b[tmp] >= 10)
+                return 0;
+            if (c[tmp] == -1)
+                q[++qr] = 20 + tmp;
+            c[tmp] = a[tmp] - b[tmp];
+            if (b[x - tmp] != -1 && b[x - tmp] != b[tmp])
+                return 0;
+            if (b[x - tmp] == -1)
+                q[++qr] = x - tmp;
+            b[x - tmp] = b[tmp];
+        }
+        else
+        {
+            tmp -= 20;
+            if (tmp < x)
+            {
+                if ((b[tmp] != -1 && b[tmp] != a[tmp] - c[tmp]) || a[tmp] - c[tmp] < 0 || a[tmp] - c[tmp] >= 10)
+                    return 0;
+                if (b[tmp] == -1)
+                    q[++qr] = tmp;
+                b[tmp] = a[tmp] - c[tmp];
+            }
+            if (c[y - tmp] != -1 && c[y - tmp] != c[tmp])
+                return 0;
+            if (c[y - tmp] == -1)
+                q[++qr] = 20 + y - tmp;
+            c[y - tmp] = c[tmp];
+        }
+        ql++;
+    }
+    if (b[x - 1] == 0 || c[y - 1] == 0)
+        return 0;
     return 1;
 }
-ll n;
-ll ans;
+void dfs(int x, ll m)
+{
+    if (m == 0)
+    {
+        ll tmp = min(a[1] - 1, 9) - max(a[1] - 9, 1) + 1;
+        tmp *= (a[1] == a[x - 1]);
+        rep(i, 2, x / 2)
+        {
+            if (tmp == 0ll)
+                break;
+            tmp *= min(a[i], 9) - max(a[i] - 9, 0) + 1;
+            tmp *= (a[i] == a[x - i]);
+        }
+        ans += tmp;
+        ref(i, 2, x) ans += build(i, x) * 2;
+        return;
+    }
+    if (m > 9)
+    {
+        a[x] = m % 10 + 10;
+        dfs(x + 1, m / 10 - 1);
+    }
+    a[x] = m % 10;
+    dfs(x + 1, m / 10);
+}
 
-signed main()
+int main()
 {
     ios::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
     cin >> n;
-    rep(i, 0, n) if (check(i) && check(n - i))
-    {
-        // cout << i << ' ' << n - i << '\n';
-        ans++;
-    }
+    dfs(1, n);
     cout << ans << '\n';
     return 0;
 }

@@ -4,59 +4,80 @@
 #define reb(i, a, b) for (int i = a; i >= b; i--)
 #define ref(i, a, b) for (int i = a; i < b; i++)
 using namespace std;
-typedef long long ll;
+#define int long long
 
-const int N = 1e6;
+const int N = 100;
+const int M = 1e6;
 const int INF = 0x3f3f3f3f;
 const int MOD = 1e9 + 7;
 
+int fast_pow(int a, int b)
+{
+    int res = 1;
+    while (b)
+    {
+        if (b & 1)
+            res = res * a % MOD;
+        a = a * a % MOD;
+        b >>= 1;
+    }
+    return res;
+}
+
+int ny[M + 5], jc[M + 5];
+void init()
+{
+    jc[1] = 1;
+    rep(i, 2, M) jc[i] = jc[i - 1] * i % MOD;
+    ny[M] = fast_pow(jc[M], MOD - 2);
+    reb(i, M, 1) ny[i - 1] = ny[i] * i % MOD;
+}
+
+int C(int n, int m)
+{
+    return jc[n] * ny[m] % MOD * ny[n - m] % MOD;
+}
+
+void _change(int &x, int &y)
+{
+    int nx = x + y, ny = x - y;
+    x = nx, y = ny;
+}
+
 int n, m;
 int x[N], y[N];
-struct matrix
+
+int work(int a[])
 {
-    int ux, uy;
-    int dx, dy;
-    void bing(matrix s)
+    int res = 0;
+    rep(i, a[1] - m, a[1] + m)
     {
-        // up
-        if (ux > s.ux)
-            swap(ux, s.ux), swap(uy, s.uy);
-        if (abs(ux - s.ux) <= abs(uy - s.uy))
-            ux = uy > s.uy ? s.ux : ux, uy = min(uy, s.uy);
-        else
+        int ans = 1;
+        rep(j, 1, n)
         {
-            ux = ((s.uy - s.ux) - (ux + uy)) / (-2);
-            uy = s.uy - (s.ux - ux);
+            int dis = abs(a[j] - i);
+            if (dis <= m && (dis & 1) == (m & 1))
+                ans *= C(m, (m - dis) / 2), ans %= MOD;
+            else
+                ans = 0;
         }
-        // down
-        if (dx > s.dx)
-            swap(dx, s.dx), swap(dy, s.dy);
-        if (abs(dx - s.dx) <= abs(dy - s.dy))
-            dx = dy < s.dy ? s.dx : dx, dy = max(dy, s.dy);
-        else
-        {
-            dx = ((s.dx + s.dy) - (dy - dx)) / 2;
-            dy = s.dy + (s.dx - dx);
-        }
+        res = (res + ans) % MOD;
     }
-};
-matrix ans;
+    return res;
+}
 
 signed main()
 {
+    init();
     ios::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
     cin >> n >> m;
-    rep(i, 1, n) cin >> x[i] >> y[i];
-    rep(i, 2, n) if ((x[i] + y[i] & 1) != (x[1] + y[1] & 1)) return cout << 0 << '\n', 0;
-    ans = {x[1], y[1] + m, x[1], y[1] - m};
-    rep(i, 2, n)
+    for (int i = 1; i <= n; i++)
     {
-        ans.bing({x[i], y[i] + m, x[i], y[i] - m});
+        cin >> x[i] >> y[i];
+        _change(x[i], y[i]);
     }
-    if (ans.ux < ans.dx)
-        return cout << 0 << '\n', 0;
-    cout << ans.ux << ' ' << ans.uy << ' ' << ans.dx << ' ' << ans.dy << '\n';
+    cout << work(x) * work(y) % MOD << '\n';
     return 0;
 }
