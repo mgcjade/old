@@ -1,0 +1,1 @@
+{"name":"GMOJ_S_7383","url":"https://gmoj.net/senior/#main/show/7383","tests":[{"input":"5\n2\nAA???\n????B\n1\nABA\nCBC\n3\n?A?B?A?\n???????\n1\nA?A\nC?C\n1\n???\n???\n","output":"0\n1\n2\n3\n24\n","id":1738844459355},{"id":1738846813052,"input":"1\n1\nA?A\nC?C","output":"3"}],"srcPath":"c:\\Users\\Administrator\\Documents\\GitHub\\old\\gmoj\\senior\\problem\\GMOJ_S_7383.cpp"}
