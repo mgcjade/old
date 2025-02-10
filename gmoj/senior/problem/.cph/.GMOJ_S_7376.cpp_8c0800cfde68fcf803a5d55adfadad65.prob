@@ -1,1 +1,1 @@
-{"name":"GMOJ_S_7376","url":"https://gmoj.net/senior/#contest/show/4319/2","tests":[{"id":1739067634954,"input":"7\n0 3 1 2 2 7 2 \n","output":"9\n"},{"id":1739071121983,"input":"9\n3 1 5 2 7 4 9 6 0","output":"20\r\n"}],"srcPath":"c:\\Users\\Administrator\\Documents\\GitHub\\old\\gmoj\\senior\\problem\\GMOJ_S_7376.cpp"}
+{"name":"GMOJ_S_7376","url":"https://gmoj.net/senior/#main/show/7376","tests":[{"id":1739154284781,"input":"7\n0 3 1 2 2 7 2\n","output":"9\n"}],"srcPath":"c:\\Users\\Administrator\\Documents\\GitHub\\old\\gmoj\\senior\\problem\\GMOJ_S_7376.cpp"}

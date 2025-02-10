@@ -1,9 +1,9 @@
 // model
 #include <bits/stdc++.h>
 #define fre(x) freopen(#x ".in", "r", stdin), freopen(#x ".out", "w", stdout)
-#define rep(i, a, b) for (int i = a; i <= b; i++)
-#define reb(i, a, b) for (int i = a; i >= b; i--)
-#define ref(i, a, b) for (int i = a; i < b; i++)
+#define rep(i, a, b) for (int i = (a); i <= (b); i++)
+#define reb(i, a, b) for (int i = (a); i >= (b); i--)
+#define ref(i, a, b) for (int i = (a); i < (b); i++)
 using namespace std;
 typedef long long ll;
 // #define int long long
@@ -402,3 +402,16 @@ private:
             DfsAns(v);
     }
 } T;
+
+// pow
+template <class _Tp>
+_Tp Pow(_Tp a, _Tp b = MOD - 2, _Tp p = MOD)
+{
+    _Tp res = 1;
+    while (b)
+    {
+        (b & 1) && (res = (ll)res * a % p);
+        a = (ll)a * a % p, b >>= 1;
+    }
+    return res;
+}
