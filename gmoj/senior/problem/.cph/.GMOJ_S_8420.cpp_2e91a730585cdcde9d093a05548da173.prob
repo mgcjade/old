@@ -1,1 +1,0 @@
-{"name":"GMOJ_S_8420","url":"https://gmoj.net/senior/#contest/show/4302/0","tests":[{"input":"1\n1\n","output":"1\n","id":1737332610135},{"id":1737332610140,"input":"5\n1 2 4 8 16\n","output":"3\n"},{"id":1737378447679,"input":"3\n1 2 4","output":"2"}],"srcPath":"c:\\Users\\Administrator\\Documents\\GitHub\\old\\gmoj\\senior\\problem\\GMOJ_S_8420.cpp"}

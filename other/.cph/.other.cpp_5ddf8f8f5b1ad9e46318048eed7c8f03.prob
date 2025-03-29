@@ -1,1 +1,0 @@
-{"name":"Local: other","url":"c:\\Users\\Administrator\\Documents\\GitHub\\old\\other\\other.cpp","tests":[{"id":1737461336250,"input":"2 2\n1 2","output":"1"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\Administrator\\Documents\\GitHub\\old\\other\\other.cpp","group":"local","local":true}

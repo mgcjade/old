@@ -1,1 +1,0 @@
-{"name":"GMOJ_S_8396","url":"https://gmoj.net/senior/#main/show/8396","tests":[{"id":1735432978579,"input":"3\n7 9\n65 98\n271828182845904523 314159265358979323\n","output":"4\n63\n68833183630578410\n"},{"id":1735433785831,"input":"1\n242 248","output":"13"}],"srcPath":"c:\\Users\\User\\Documents\\Github\\old\\gmoj\\senior\\problem\\GMOJ_S_8396.cpp"}
