@@ -61,7 +61,7 @@ void solve()
     // time = lc / v1 / v2;
     if (v2 != 0 && (lc / v2 - lc / v1) % (2 * l) == l)
     {
-        ans -= (t * v1 * v2 + lc) / (2 * lc);
+        ans -= (t * v1 * v2 + lc) / (2 * lc); // t*lc/time
     }
     write(ans);
     putchar('\n');
